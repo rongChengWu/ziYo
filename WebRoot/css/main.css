@@ -1,0 +1,140 @@
+@charset "gb2312";
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, /* structural elements 结构元素 */
+dl, dt, dd, ul, ol, li, /* list elements 列表元素 */
+pre, /* text formatting elements 文本格式元素 */
+form, fieldset, legend, button, input, textarea, /* form elements 表单元素 */ 
+th, td /* table elements 表格元素 */ {margin: 0;padding: 0;}
+/** 设置默认字体 **/
+body, button, input, select, textarea /* for ie */ {font: 12px/1.6 tahoma, arial, \5b8b\4f53;}
+h1, h2, h3, h4, h5, h6 {font-size: 100%;}
+address, cite, dfn, em, var {font-style: normal;} /* 将斜体扶正 */
+code, kbd, pre, samp {font-family: courier new, courier, monospace;} /* 统一等宽字体 */
+small {font-size: 12px;} /* 小于 12px 的中文很难阅读，让 small 正常化 */
+/** 重置列表元素 **/
+ul, ol {list-style: none;}/** 重置文本格式元素 **/
+a {text-decoration: none;}
+a {outline: none;} /* 去掉Firefox点击时产生的虚线框 */
+a:hover {text-decoration: underline;}
+sup {vertical-align: text-top;} /* 重置，减少对行高的影响 */
+sub {vertical-align: text-bottom;}
+/** 重置表单元素 **/
+legend {color: #000;} /* for ie6 */
+fieldset, img {border: 0;} /* img 搭车：让链接里的 img 无边框 */
+button, input, select, textarea {font-size: 100%;} /* 使得表单元素在 ie 下能继承字体大小 */
+.png-bg{}/* 注：optgroup 无法扶正 */
+/** 重置表格元素 **/
+table {border-spacing: 0;border-collapse:collapse; white-space:normal;}
+/** 清空浮动层 **/
+.clearfix:after {visibility: hidden;display: block;font-size: 0;content: " ";clear: both;height: 0;}
+* html .clearfix             { zoom: 1; } /* IE6 */
+*:first-child+html .clearfix { zoom: 1; } /* IE7 */ 
+/* main page style */
+body  { margin:0px;  SCROLLBAR-FACE-COLOR: #72A3D0; SCROLLBAR-HIGHLIGHT-COLOR: #337ABB; 
+SCROLLBAR-SHADOW-COLOR: #337ABB; SCROLLBAR-DARKSHADOW-COLOR: #337ABB; SCROLLBAR-3DLIGHT-COLOR: #337ABB; SCROLLBAR-ARROW-COLOR: #FFFFFF;
+SCROLLBAR-TRACK-COLOR: #337EC0;  font-size:12px;}
+a { color: #135294;font-size:12px; }
+a:hover { color: #ff6600;}
+table tr td{ padding:3px;}
+.main-data{padding:10px 10px 10px 10px;margin:0;}
+.main-data .list { background: none repeat scroll 0 0 #C7E2FC;
+    border: 1px solid #68C5F1;
+    color: #000000;
+    font-size: 13px;
+    margin-top: 5px;
+    padding: 3px;
+    text-align: left;
+}
+.main-data .list .title{ 
+	background:#d0e6f1;
+    text-align: center;
+}
+
+.main-data table { 
+	width: 97%;
+}
+.main-data table tr td{ 
+	border:1px solid #9fd9e8;
+}
+.main-data .title { 
+	background:#d0e6f1;
+	text-align: left;
+}
+.main-data .conter { 
+	background:#f4f2f2;
+	text-align: left;
+}
+.main-data .submit { 
+	background:#d0e6f1;
+	text-align: center;
+}
+.list-title{height:38px;line-height:38px;}
+.list-title a.btn{ background:url(/images/btn.jpg);width:108px; height:38px; display:block; text-align:center; line-height:38px;float:left;
+font-weight: bold; color:#0C73BE;}
+.list-title a:hover.btn{background:url(/images/btn1.jpg); text-decoration:none}
+
+.warning{border:1px #68C5F1 solid; padding:6px; background-color:#C7E2FC;width:400px;margin:50px auto 0 auto;}
+.warning-box{border:1px #68C5F1 solid;padding:26px; background-color:#EEF9FF;}
+.tipsimg{float:left;}
+.tipsimg img{ padding:5px 10px 5px 5px;}
+.tipstxt{ font:14px/1.8 微软雅黑, Arial, Helvetica, sans-serif}
+
+.ggbtntitle{height:38px;
+			line-height:38px;
+			width:100%;
+			background: none repeat scroll 0 0 #C7E2FC;
+    		border: 1px solid #68C5F1;
+    		color: #000000;
+    		font-size: 14px;
+    		margin-top: 0px;
+    		padding: 4px;
+    		}
+.ggbtn{display:block;background:url(/images/qianshou.jpg); width:105px; height:43px; font:bold 14px 微软雅黑, Arial, Helvetica, sans-serif;color:#fff; padding:13px 6px 0 6px; text-align:center; cursor:pointer;float:left;}
+.ggbtn img { position:relative; top:4px;}
+.list-title a.ggbtn:hover { text-decoration:none;background:url(/images/qianshou1.jpg);color:#fff;}
+.S_botton{border:1px #7b93cb solid; background:#ecf1f7; height:20px; padding-top:2px;}
+.S_select{border:1px #7b93cb solid; background:#ecf1f7; padding-top:2px;}
+.formtitletr{background-color:#f7fcff;}
+.formtitle{background-color:#d0e6f1;}
+.formcontent{background-color:#f4f2f2;}
+.selectNode{width:266px;height:300px;overflow:auto; border:1px solid #999999;padding:8px;background:#FFFFFF;color:#666;position:absolute;left:0;top:0;display:none;font-size:12px;z-index : 7;}
+
+
+/*附件*/
+.form-attachment { color:#003366;}
+.form-attachment span{ color:#0066CC; border-bottom:1px solid #0066CC; cursor:pointer;}
+.form-attachment label{ color:#999999;}
+fieldset {
+	border: 1px solid #cccccc;
+	padding: 3px 3px;
+}
+
+input.addfile {     
+	cursor:pointer !important;     
+	filter:alpha(opacity=0);moz-opacity: 0;-khtml-opacity: 0;opacity:0;     
+	}  
+a.addfile {     
+	background-image:url(../images/attachment-icon.gif);     
+	background-repeat:no-repeat; 
+	background-position:0px 4px;  
+	display:block;     
+	float:left;    
+	height:20px;     
+	margin-top:-1px;    
+	position:relative;    
+	text-decoration:none;     
+	top:0pt;     
+	width:80px;
+	z-index: 10;
+	
+	
+}
+
+/* 删除按钮 */
+span.deleteATM
+{
+	background-image: url(../images/attachment-icon.gif);
+	background-repeat:no-repeat; 
+	background-position:0px -18px;  
+	cursor: pointer;
+	width: 14px;
+}

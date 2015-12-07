@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+ 
+ <!-- spring 配置 -->
+ <listener>
+     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+ </listener>
+ <context-param>
+     <description>Spring上下文</description>
+     <param-name>contextConfigLocation</param-name>
+     <param-value>classpath:applicationContext.xml</param-value>
+ </context-param>
+ 
+ <!-- hibernate 懒加载问题过滤 -->
+ <filter>
+     <description>hibernate session 过滤器</description>
+     <filter-name>openSessionInViewFilter</filter-name>
+     <filter-class>org.springframework.orm.hibernate4.support.OpenSessionInViewFilter</filter-class>
+ </filter>
+ <filter-mapping>
+     <filter-name>openSessionInViewFilter</filter-name>
+     <url-pattern>/*</url-pattern>
+ </filter-mapping>
+    
+ <!-- struts 配置 -->
+ <filter>
+     <filter-name>struts2</filter-name>
+     <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+ </filter>
+ <filter-mapping>
+     <filter-name>struts2</filter-name>
+     <url-pattern>/*</url-pattern>
+ </filter-mapping>
+ <!-- jsp 页面过滤 -->
+ <filter>
+    <filter-name>UserUrlFilter</filter-name>
+    <filter-class>com.wrc.ziyo.filters.UserUrlFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>UserUrlFilter</filter-name>
+    <url-pattern>*.jsp</url-pattern>
+  </filter-mapping>
+ 
+   <welcome-file-list>
+    <welcome-file>/jsp/system/login.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>

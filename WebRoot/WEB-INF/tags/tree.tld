@@ -1,0 +1,27 @@
+<taglib xmlns="http://java.sun.com/JSP/TagLibraryDescriptor">
+	<tlib-version>2.3.15</tlib-version>
+	<jsp-version>1.2</jsp-version>
+	<short-name>wrc</short-name>
+	<uri>http;//wrc.linkcm.tag/nodeTag</uri>
+	
+<tag>
+    <name>TopTag</name>
+    <tagclass>com.wrc.ziyo.tag.TopTag</tagclass>
+    <bodycontent>empty</bodycontent>
+    <info></info>
+  </tag>
+	
+  <tag>
+    <name>TreeTag</name>
+    <tagclass>com.wrc.ziyo.tag.TreeTag</tagclass>
+    <bodycontent>empty</bodycontent>
+    <info></info>
+  	<attribute>
+      <name>fanodeid</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+	</attribute>
+  </tag>
+  
+
+</taglib>

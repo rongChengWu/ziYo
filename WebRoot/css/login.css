@@ -1,0 +1,24 @@
+@charset "gb2312";
+/*后台登录*/
+* {margin:0;padding:0;}
+body, html {background-color:#fff; margin:0 auto; padding:0;}
+.clear{clear:both;}
+#top{width:1024px; margin:0 auto; padding:39px 0 0 39px;}
+.logo_2{ padding:150px 0 0 465px;}
+#content{ height:150px; background:url(/ziYo/images/login/01.jpg) repeat-x 0 0;}
+.login{ width:1024px; height:150px; margin:0 auto;}
+.login_1{ width:375px; height:150px; padding-left:470px; background:url(/ziYo/images/login/04.jpg) no-repeat right top;}
+.login_2{width:375px; height:140px; background:url(/ziYo/images/login/03.jpg) no-repeat left top; padding-top:10px;}
+.login_2 td{ color:#fff; font-size:12px;}
+.input1{ width:160px; height:20px; border:solid 1px #FA8733;}
+.input2{ width:105px; height:20px; border:solid 1px #FA8733;}
+.hui{ color:#454545;}
+
+#bottom{ height:120px; width:1024px; margin:0 auto; text-align:center;}
+.copyright{ width:375px; padding:10px 0 0 470px; height:120px;}
+h1,h2,p{ margin:0; padding:0; font-size:12px;;}
+#bottom h1{ font-size:12px; font-weight:bold; color:#007FC6; line-height:30px;}
+#bottom h1 span{ color:#FF6C00;}
+#bottom h2{color:#999; font-weight:normal;}
+/*用户登录结束*/
+

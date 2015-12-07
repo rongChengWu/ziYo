@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <!-- 使用 spring -->
+    <!-- 配置解释参考 http://blog.sina.com.cn/s/blog_6e601baf01011tcb.html -->
+    <constant name="struts.objectFactory" value="spring" />
+    <constant name="struts.i18n.encoding" value="UTF-8" />
+    <constant name="struts.configuration.xml.reload" value="true"></constant>
+
+    <package name="default" extends="struts-default" >
+        <interceptors>
+            <!-- 权限拦截 -->
+            <interceptor name="authority" class="com.wrc.ziyo.interceptor.AuthorityInterceptor"></interceptor> 
+            <!-- 异常拦截 -->
+            <interceptor name="exceptionInterceptor" class="com.wrc.ziyo.interceptor.ExceptionInterceptor"></interceptor>
+            <!-- 解决 struts 安全漏洞，拦截所有带 # 号的 url -->
+            <interceptor-stack name="myStack">
+                <interceptor-ref name="defaultStack"></interceptor-ref>
+                <interceptor-ref name="authority"></interceptor-ref>
+                <interceptor-ref name="exceptionInterceptor"></interceptor-ref>
+                <interceptor-ref name="params">
+                    <param name="excludeParams">.*\\u0023.*</param>
+                </interceptor-ref>
+            </interceptor-stack>
+              <!-- 默认拦截器栈 -->
+        </interceptors>
+        <default-interceptor-ref name="myStack"></default-interceptor-ref>
+        
+       
+        
+        <global-results>
+            <result name="login">/ziYo/jsp/login.jsp</result>
+            <result name="error">/ziYo/error.jsp</result>
+        </global-results>
+
+    </package>
+
+</struts>
