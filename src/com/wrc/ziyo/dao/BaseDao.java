@@ -27,6 +27,8 @@ public class BaseDao<T extends Serializable> {
 	private final String HQL_LIST_ALL;
 	private final String HQL_COUNT_ALL;
 
+	private final String HQL;
+
 	@SuppressWarnings("rawtypes")
 	public Class getEntityClass() {
 		return entityClass;
@@ -56,6 +58,7 @@ public class BaseDao<T extends Serializable> {
 				+ " order by " + pkname + " desc";
 		HQL_COUNT_ALL = "select count(*) from "
 				+ this.entityClass.getSimpleName();
+		HQL = "select t from " + this.entityClass.getSimpleName() + " t ";
 	}
 
 	/**
@@ -275,6 +278,35 @@ public class BaseDao<T extends Serializable> {
 			session = sessionFactory.openSession();
 			session.beginTransaction();
 			Query query = session.createQuery(hql);
+			for (int i = 0; i < objects.length; i++) {
+				query.setParameter(i, objects[i]);
+			}
+			list = query.list();
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return list;
+	}
+
+	/**
+	 * HQL查询
+	 * 
+	 * @param hql
+	 * @param objects
+	 * @throws HibernateException
+	 */
+	@SuppressWarnings("unchecked")
+	public List<Object[]> findByHqlWher(String where, final Object... objects)
+			throws Exception {
+		List<Object[]> list = null;
+		Session session = null;
+		try {
+			session = sessionFactory.openSession();
+			session.beginTransaction();
+			Query query = session.createQuery(HQL + where);
 			for (int i = 0; i < objects.length; i++) {
 				query.setParameter(i, objects[i]);
 			}

@@ -1,6 +1,5 @@
 package com.wrc.ziyo.action.product;
 
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
 import java.util.List;
@@ -139,10 +138,10 @@ public class ProductAction extends ActionSupport implements
 	}
 
 	@Action("getSelect2Products")
-	public String getSelect2Products() throws IOException {
+	public String getSelect2Products() {
 		this.response.setCharacterEncoding("UTF-8");
-		PrintWriter out = this.response.getWriter();
 		try {
+			PrintWriter out = this.response.getWriter();
 			List listAss = this.productService.findAll();
 			StringBuffer jsonSelect2 = new StringBuffer();
 			jsonSelect2.append("[");
@@ -157,10 +156,8 @@ public class ProductAction extends ActionSupport implements
 			}
 			jsonSelect2.append("]");
 			out.print(jsonSelect2.toString());
-			return null;
 		} catch (Exception e) {
 			e.printStackTrace();
-			out.print("1");
 		}
 		return null;
 	}

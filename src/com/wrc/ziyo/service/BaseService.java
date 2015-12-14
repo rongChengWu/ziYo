@@ -59,6 +59,12 @@ public class BaseService<T extends Serializable> {
 		return this.baseDao.findByHql(hql, objects);
 	}
 
+	public List<Object[]> findByHqlWher(String where, final Object... objects)
+			throws Exception {
+		return this.baseDao.findByHqlWher(where, objects);
+
+	}
+
 	public BaseDao<T> getBaseDao() {
 		/* 41 */return this.baseDao;
 	}

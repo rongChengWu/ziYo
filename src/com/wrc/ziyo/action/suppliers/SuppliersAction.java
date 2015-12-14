@@ -141,7 +141,6 @@ public class SuppliersAction extends ActionSupport implements
 			}
 			jsonSelect2.append("]");
 			out.print(jsonSelect2.toString());
-			return null;
 		} catch (Exception e) {
 			e.printStackTrace();
 			out.print("1");

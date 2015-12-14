@@ -7,13 +7,40 @@ $(function () {
 		success:function(json){
 			jsonDate=eval("(" + json+")");
 		}
+	});
+	$.ajaxSetup({async:false});
+	var customerJson;
+	$.ajax({
+		type:"post",
+		url:"/ziYo/customerAction/getCustomerBySelect2",
+		dataType:'text',
+		success:function(json){
+			customerJson=eval("(" + json+")");
+		}
 	});	
+	$("select[name='order.tc_id']").select2({
+		  data: customerJson
+		});
+	$.ajaxSetup({async:true});
 });
 
 function changeCP(cpId,proNum){
-	alert(proNum);
-	alert(cpId.value);
-	alert($(cpId).find("option:selected").text());
+	$("select[name='kc_"+proNum+"']").empty();
+	var kcJson;
+	$.ajaxSetup({async:false});
+	$.ajax({
+		type:"post",
+		url:"/ziYo/rkdmxAction/getKcBySelect2",
+		dataType:'text',
+		data: {tp_id:cpId.value},
+		success:function(json){
+			kcJson=eval("(" + json+")");
+		}
+	});	
+	$("select[name='kc_"+proNum+"']").select2({
+		  data: kcJson
+		});
+	$.ajaxSetup({async:true});
 }
 
 function formatRepo (repo) {
@@ -45,26 +72,26 @@ function formatRepo (repo) {
   
 function checkFromSubmitAdd(){
 	sumBdje();
-	document.rkdForm.action="/ziYo/customerAction/add";
-	document.rkdForm.submit();
+	document.orderForm.action="/ziYo/orderAction/add";
+	document.orderForm.submit();
 }
 
 function checkFromSubmitUpdate(){
 	sumBdje();
-	document.rkdForm.action="/ziYo/customerAction/update";
-	document.rkdForm.submit();
+	document.orderForm.action="/ziYo/orderAction/update";
+	document.orderForm.submit();
 }
 
 var mxxh=0;
 function addProduct(){
 	mxxh+=1;
-	var rkdmxTable=document.getElementById("rkdmxTable");
-	  var rowsNum = rkdmxTable.rows.length;  //获取当前行数
-	   var myNewRow = rkdmxTable.insertRow(rowsNum);//插入新行
+	var ordermxTable=document.getElementById("orderMxTable");
+	  var rowsNum = ordermxTable.rows.length;  //获取当前行数
+	   var myNewRow = ordermxTable.insertRow(rowsNum);//插入新行
 	   myNewRow.id="mxtr"+mxxh;
 	   myNewRow.innerHTML=""+getRkdmxHtml(mxxh);
 	
-//	$("#rkdmxTable").html($("#rkdmxTable").html()+getRkdmxHtml(mxxh));
+//	$("#ordermxTable").html($("#ordermxTable").html()+getRkdmxHtml(mxxh));
 	$.ajaxSetup({async:false});
 	$("select[name='tpid_"+mxxh+"']").select2({
 		  data: jsonDate
@@ -87,22 +114,20 @@ function sumBdje(){
 			sumBdje=eval(sumBdje+sumJe);
 		}
 	}
-	$("input[name='rkd.bdje']").val(sumBdje.toFixed(2));
+	$("input[name='order.bdzj']").val(sumBdje.toFixed(2));
 	
 }
 
 function getRkdmxHtml(productNum){
 	var strHtml="<tr bgcolor='#E7F2F8' onMouseOver='this.bgColor=\'#FFFFFF\';' onMouseOut='this.bgColor=\'#E7F2F8\';' id='mxtr"+productNum+"'>" +
-			"<td align='center'><input type='text' value='"+productNum+"' style='width:10px;border:0px;'  name='mxxh' readonly='readonly'/></td>" +
-			"<td align='center'>" +"<select class='js-example-data-array' name='tpid_"+productNum+"'  id='pro"+productNum+"'></select></td>" +
-			"<td align='center'><input type='text' style='width:100%;'   value='' name='scph"+productNum+"'/></td>" +
+			"<td align='center'><input type='text' value='"+productNum+"' style='width:10px;border:0px;'  name='mxxh' readonly='readonly' /></td>" +
+			"<td align='center'>" +"<select class='js-example-data-array' name='tpid_"+productNum+"'  id='pro"+productNum+"'  onchange=\"changeCP(this,"+productNum+");\"></select></td>" +
+			"<td align='center'>" +"<select class='js-example-data-array' name='kc_"+productNum+"'  id='kc"+productNum+"'></select></td>" +
 			"<td align='center'><input type='text' style='width:100%;'   value='' name='sl"+productNum+"'/></td>" +
 			"<td align='center'><input type='text' style='width:100%;'   value='' name='dj"+productNum+"' onblur='sumBdje();'/></td>" +
 			"<td align='center'><input type='text' style='width:100%;' disabled=\"disabled\"   value='' name='je"+productNum+"'/></td>" +
-			"<td align='center'><input  readonly='readonly' class='Wdate editbox input1' type='text'  style='width:150px;' onClick=\"WdatePicker({dateFmt:'yyyy-MM-dd'})\" name='scrq"+productNum+"'/></td>" +
-			"<td align='center'><input readonly='readonly' class='Wdate editbox input1' type='text' style='width:150px;'  onClick=\"WdatePicker({dateFmt:'yyyy-MM-dd'})\" name='yxq"+productNum+"'/></td>" +
 			"<td align='center'><input type='text' style='width:100%;'   value='' name='bz"+productNum+"'/></td>" +
-			"<td align='center'><a href='javascript:void(0)' onclick='updateMx()'>修改产品</a>&nbsp;&nbsp;<a href='javascript:void(0)' onclick=\"delMx('mxtr"+productNum+"')\">删除产品</a></td>" +
+			"<td align='center'><a href='javascript:void(0)' onclick=\"delMx('mxtr"+productNum+"')\">删除产品</a></td>" +
 			"</tr>";
 			return strHtml;
 }

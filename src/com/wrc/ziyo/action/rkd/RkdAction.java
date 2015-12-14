@@ -81,6 +81,7 @@ public class RkdAction extends ActionSupport implements ServletRequestAware,
 							+ mxxh[i], new Date(), "yyyy-MM-dd"));
 					rkdmx.setBz(WebUtils
 							.getParam(request, "bz" + mxxh[i], null));
+					rkdmx.setSysl(WebUtils.getParam(request, "sl" + mxxh[i], 0));
 					this.rkdmxService.save(rkdmx);
 				}
 			}
@@ -168,16 +169,8 @@ public class RkdAction extends ActionSupport implements ServletRequestAware,
 		return request;
 	}
 
-	public void setRequest(HttpServletRequest request) {
-		this.request = request;
-	}
-
 	public HttpServletResponse getResponse() {
 		return response;
-	}
-
-	public void setResponse(HttpServletResponse response) {
-		this.response = response;
 	}
 
 	public RkdService getRkdService() {

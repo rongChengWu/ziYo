@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -44,6 +46,10 @@ public class Rkdmx implements Serializable {
 	private String bz;
 	@Column(name = "SYSL")
 	private Integer sysl;
+
+	@OneToOne
+	@JoinColumn(name = "TP_ID", insertable = false, updatable = false)
+	private Product product;
 
 	public Integer getId() {
 		return id;
@@ -139,6 +145,14 @@ public class Rkdmx implements Serializable {
 
 	public void setSysl(Integer sysl) {
 		this.sysl = sysl;
+	}
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 
 }

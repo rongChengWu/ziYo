@@ -8,7 +8,7 @@
 <script type="text/javascript" src="/ziYo/js/jquery.min.js"></script>
 <script type="text/javascript" src="/ziYo/js/select2/dist/js/select2.min.js"></script>
 <script type="text/javascript" src="/ziYo/js/public.js"></script>
-<script type="text/javascript" src="/ziYo/jsp/rkd/js/rkd.js"></script>
+<script type="text/javascript" src="/ziYo/jsp/customer/js/customer.js"></script>
 <script type="text/javascript" src="/ziYo/js/My97DatePicker/WdatePicker.js"></script>
 <style type="text/css">
 .input1{width: 300px;}
@@ -32,7 +32,7 @@
   </tr>
 </table>
 </div>
-<form name="rkdForm" method="post">
+<form name="customerForm" method="post">
 <div class="main-data">
     <table width="100%" cellspacing="0" cellpadding="2" bordercolor="#9fd9e8" border="1" bgcolor="#d0e6f1" bordercolordark="#EDF2FA">
         <tbody>

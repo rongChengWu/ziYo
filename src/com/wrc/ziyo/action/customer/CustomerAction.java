@@ -1,5 +1,6 @@
 package com.wrc.ziyo.action.customer;
 
+import java.io.PrintWriter;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
@@ -79,6 +80,29 @@ public class CustomerAction extends ActionSupport implements
 			this.request.setAttribute("msg", "产品查询失败");
 		}
 		return "error";
+	}
+
+	@Action("getCustomerBySelect2")
+	public void getCustomerBySelect2() {
+		this.response.setCharacterEncoding("UTF-8");
+		try {
+			PrintWriter out = this.response.getWriter();
+			List listAss = this.customerService.findAll();
+			StringBuffer jsonSelect2 = new StringBuffer();
+			jsonSelect2.append("[");
+			for (int i = 0; i < listAss.size(); i++) {
+				Customer customer = (Customer) listAss.get(i);
+				if (i != 0)
+					jsonSelect2.append(",");
+				jsonSelect2.append("{ id: " + customer.getId() + ", text: '"
+						+ customer.getKhmc() + "※" + customer.getQy() + "※"
+						+ customer.getJc() + "※" + customer.getYwy() + "' }");
+			}
+			jsonSelect2.append("]");
+			out.print(jsonSelect2.toString());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public HttpServletRequest getRequest() {
