@@ -5,18 +5,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link href="/ziYo/css/main.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" type="text/css" media="all" href="/ziYo/js/select2/dist/css/select2.min.css">
-<script type="text/javascript" src="/ziYo/js/jquery.min.js"></script>
-<script type="text/javascript" src="/ziYo/js/select2/dist/js/select2.min.js"></script>
-<script type="text/javascript" src="/ziYo/js/public.js"></script>
-<script type="text/javascript" src="/ziYo/jsp/product/js/product.js"></script>
-<script type="text/javascript" src="/ziYo/js/My97DatePicker/WdatePicker.js"></script>
+<link rel="stylesheet" type="text/css" media="all" href="/ziYo/js/select2/dist/css/select2.min.css" />
 <style type="text/css">
 .input1{width: 300px;}
 .botn{margin:0; padding:0;border:0;  width:60px;height:25px; background:url(/ziYo/images/anniu.jpg) no-repeat 0 0; margin-right:10px;}
 .botn a{ width:60px; height:25px; line-height:25px; display:block; text-align:center; color:#fff; text-decoration:none;}
 .botn a:hover{ color:#000; text-decoration:none;}
 </style>
+<script type="text/javascript" src="/ziYo/js/jquery.min.js"></script>
+<script type="text/javascript" src="/ziYo/js/select2/dist/js/select2.min.js"></script>
+<script type="text/javascript" src="/ziYo/js/public.js"></script>
+<script type="text/javascript" src="/ziYo/jsp/product/js/product.js"></script>
+<script type="text/javascript" src="/ziYo/js/My97DatePicker/WdatePicker.js"></script>
+<title>梓瑶生物</title>
 </head>
 <body>
 <div class="main_title">

@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -20,26 +22,34 @@ public class OrderDetail implements Serializable {
 	@SequenceGenerator(name = "CUSTOMER_SEQ", allocationSize = 1, initialValue = 1, sequenceName = "CUSTOMER_SEQ")
 	private Integer id;
 
-	@Column(name = "to_id")
+	@Column(name = "TOD_to_id")
 	private Integer to_id;
 
-	@Column(name = "tp_id")
+	@Column(name = "TOD_tp_id")
 	private Integer tp_id;
 
-	@Column(name = "kc_id")
+	@Column(name = "TOD_kc_id")
 	private Integer kc_id;
 
-	@Column(name = "num")
+	@Column(name = "TOD_num")
 	private Integer num;
 
-	@Column(name = "dj")
-	private float dj;
+	@Column(name = "TOD_dj")
+	private Float dj;
 
-	@Column(name = "je")
-	private float je;
+	@Column(name = "TOD_je")
+	private Float je;
 
-	@Column(name = "BZ")
+	@Column(name = "TOD_BZ")
 	private String bz;
+
+	@OneToOne
+	@JoinColumn(name = "TOD_to_id", insertable = false, updatable = false)
+	private Order order;
+
+	@OneToOne
+	@JoinColumn(name = "TOD_kc_id", insertable = false, updatable = false)
+	private Rkdmx rkdmx;
 
 	public Integer getId() {
 		return id;
@@ -103,6 +113,22 @@ public class OrderDetail implements Serializable {
 
 	public void setBz(String bz) {
 		this.bz = bz;
+	}
+
+	public Order getOrder() {
+		return order;
+	}
+
+	public void setOrder(Order order) {
+		this.order = order;
+	}
+
+	public Rkdmx getRkdmx() {
+		return rkdmx;
+	}
+
+	public void setRkdmx(Rkdmx rkdmx) {
+		this.rkdmx = rkdmx;
 	}
 
 }

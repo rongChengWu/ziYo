@@ -23,39 +23,39 @@ public class Product implements Serializable {
 	@SequenceGenerator(name = "Suppliers_seq", allocationSize = 1, initialValue = 1, sequenceName = "Suppliers_seq")
 	private Integer id;
 
-	@Column(name = "CPBM")
+	@Column(name = "TP_CPBM")
 	private String cpbm;
 
-	@Column(name = "CPMC")
+	@Column(name = "TP_CPMC")
 	private String cpmc;
 
-	@Column(name = "CPGG")
+	@Column(name = "TP_CPGG")
 	private String cpgg;
 	// 1 国产 2 进口
-	@Column(name = "CPLX")
+	@Column(name = "TP_CPLX")
 	private Integer cplx;
 
-	@Column(name = "TS_ID")
+	@Column(name = "TP_TS_ID")
 	private Integer tsid;
 
-	@Column(name = "dw")
+	@Column(name = "TP_dw")
 	private String dw;
 
 	@OneToOne
-	@JoinColumn(name = "TS_ID", insertable = false, updatable = false)
+	@JoinColumn(name = "TP_TS_ID", insertable = false, updatable = false)
 	private Suppliers suppliers;
 
-	@Column(name = "USER_ID")
+	@Column(name = "TP_USER_ID")
 	private Integer userid;
 
 	@OneToOne
-	@JoinColumn(name = "USER_ID", insertable = false, updatable = false)
+	@JoinColumn(name = "TP_USER_ID", insertable = false, updatable = false)
 	private Users users;
 
-	@Column(name = "LAST_TIME")
+	@Column(name = "TP_LAST_TIME")
 	private Date lastTime;
 
-	@Column(name = "BZ")
+	@Column(name = "TP_BZ")
 	private String bz;
 
 	public Integer getId() {

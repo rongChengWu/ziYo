@@ -8,18 +8,19 @@
 <link href="/ziYo/css/main.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" media="all" href="/ziYo/js/select2/dist/css/select2.min.css"/>
  <link rel="stylesheet" type="text/css" href="/ziYo/js/jPaginate/css/style.css" media="screen"/>
+ 
 <script type="text/javascript" src="/ziYo/js/jquery.min.js"></script>
 <script type="text/javascript" src="/ziYo/js/select2/dist/js/select2.min.js"></script>
 <script type="text/javascript" src="/ziYo/js/public.js"></script>
-<script type="text/javascript" src="/ziYo/jsp/product/js/product.js"></script>
+<script type="text/javascript" src="/ziYo/jsp/stock/js/stock.js"></script>
 <script type="text/javascript" src="/ziYo/js/My97DatePicker/WdatePicker.js"></script>
 <script type="text/javascript" src="/ziYo/js/jPaginate/jquery.paginate.js"></script>
 <title>梓瑶生物</title>
 </head>
 <body>
   <div class="list">
-                        <strong>产品查询</strong>
-                            <form action="/ziYo/productAction/list"  method="post"  name="productListForm">
+                        <strong>库存查询</strong>
+                            <form action="/ziYo/rkdmxAction/list"  method="post" name="queryListForm">
                             <table width="100%" border="1" bordercolor="#9FD9E8" cellpadding="2" cellspacing="0" bordercolordark="#EDF2FA" bgcolor="#D0E6F1">
                             <tr>
                                 
@@ -27,34 +28,28 @@
                                     <strong>产品名称：</strong>
                                 </td>
                                 <td width="60" bgcolor="#F4F2F2">
-                                    <input type="text" id="" value="${product.cpmc}" name="product.cpmc"/>
+                                   <input type="text" id="" value="${rkdmx.product.cpmc}" name="rkdmx.product.cpmc"/>
                                 </td>
                                 <td width="80" align="right" bgcolor="#D0E6F1">
                                     <strong>产品规格：</strong>
                                 </td>
                                 <td width="60" bgcolor="#F4F2F2">
-                                    <input type="text"  id="" value="${product.cpgg}" name="product.cpgg"/>
+                                    <input type="text"  id="" value="${rkdmx.product.cpgg}" name="rkdmx.product.cpgg"/>
                                 </td>
                                 <td width="80" align="right" bgcolor="#D0E6F1">
                                     <strong>供应商：</strong>
                                 </td>
                                 <td width="80" bgcolor="#F4F2F2">
-                                      <select class="js-example-data-array" name="product.tsid">
+                                   <select class="js-example-data-array" name="rkdmx.product.tsid">
                                         <option value="" selected="selected">查询所有</option>
                                       </select>
-                                </td>
-                                   <td width="80" align="right" bgcolor="#D0E6F1">
-                                    <strong>产品类型：</strong>
-                                </td>
-                                <td width="80" bgcolor="#F4F2F2">
-                                    <input type="text" id="" value="${product.cplx}" name="product.cplx"/>
                                 </td>
                                 <td bgcolor="#F4F2F2">
                                     <input type="submit"  value=" 查  询 "/>
                                 </td>
                             </tr>
                         </table>
-                        <!-- page start -->
+                            <!-- page start -->
                         <input type="hidden" name="pageBean.pageStart" value="${pageBean.pageStart}">
                         <!-- page end -->
                     </form>
@@ -62,7 +57,7 @@
                     
                     
     <div class="list">
-                        <strong>产品列表 </strong>
+                        <strong>库存列表 </strong>
                         <table width="100%" border="1" bordercolor="#9FD9E8"
                             cellpadding="2" cellspacing="0" bordercolordark="#EDF2FA"
                             bgcolor="#D0E6F1">
@@ -71,34 +66,34 @@
                                     <strong>序号</strong>
                                 </td>
                                 <td width="150" align="center" bgcolor="#D0E6F1">
-                                    <strong>产品编码</strong>
-                                </td>
-                                <td width="150" align="center" bgcolor="#D0E6F1">
                                     <strong>产品名称</strong>
                                 </td>
+                                <td width="150" align="center" bgcolor="#D0E6F1">
+                                    <strong>规格</strong>
+                                </td>
                                 <td width="90" align="center" bgcolor="#D0E6F1">
-                                    <strong>产品规格</strong>
-                                </td>
-                                <td width="80" align="center" bgcolor="#D0E6F1">
-                                    <strong>产品类型</strong>
-                                </td>
-                                <td width="85" align="center" bgcolor="#D0E6F1">
-                                    <strong>供应商</strong>
-                                </td>
-                                 <td width="85" align="center" bgcolor="#D0E6F1">
                                     <strong>单位</strong>
                                 </td>
                                   <td width="150" align="center" bgcolor="#D0E6F1">
-                                    <strong>备注</strong>
+                                    <strong>剩余数量</strong>
                                 </td>
                                 <td width="150" height="28" align="center" bgcolor="#D0E6F1">
-                                    <strong>最后修改人员</strong>
-                                </td>
-                                <td width="150" align="center" bgcolor="#D0E6F1">
-                                    <strong>最后修改时间</strong>
+                                    <strong>单价</strong>
                                 </td>
                                 <td height="28" align="center" bgcolor="#D0E6F1">
-                                    <strong>操作</strong>
+                                    <strong>生产批号</strong>
+                                </td>
+                                   <td width="150" height="28" align="center" bgcolor="#D0E6F1">
+                                    <strong>有效期</strong>
+                                </td>
+                                <td width="150" align="center" bgcolor="#D0E6F1">
+                                    <strong>生产日期</strong>
+                                </td>
+                                <td height="28" align="center" bgcolor="#D0E6F1">
+                                    <strong>供应商</strong>
+                                </td>
+                                 <td height="28" align="center" bgcolor="#D0E6F1">
+                                    <strong>备注</strong>
                                 </td>
                             </tr>
                             
@@ -115,41 +110,40 @@
                                     <%=si++%>
                                     </td>
                                     <td align="center">
-                                            ${ass.cpbm}
+                                        ${ass.product.cpmc}
                                     </td>
                                     <td align="center">
-                                        ${ass.cpmc}
+                                         ${ass.product.cpgg}
                                     </td>
                                     <td align="center">
-                                        ${ass.cpgg}
+                                       ${ass.product.dw}
                                     </td>
                                     <td align="center">
-                                    <c:if test="${ass.cplx==1}">国产</c:if>
-                                     <c:if test="${ass.cplx==2}">进口</c:if>
+                                        ${ass.sysl}
+                                    </td>
+                                     <td align="center">
+                                        ${ass.rkdj}
                                     </td>
                                     <td align="center">
-                                        ${ass.suppliers.gysmc}
+                                        ${ass.scph}
+                                    </td>
+                                    <td align="center">
+                                        ${ass.yxq}
+                                    </td>
+                                     <td align="center">
+                                        ${ass.scrq}
+                                    </td>
+                                    <td align="center">
+                                         ${ass.product.suppliers.gysmc}
                                     </td>
                                       <td align="center">
-                                        ${ass.dw}
-                                    </td>
-                                    <td align="center">
                                         ${ass.bz}
-                                    </td>
-                                    <td align="center">
-                                        ${ass.users.userName}
-                                    </td>
-                                    <td align="center">
-                                        ${ass.lastTime}
-                                    </td>
-                                    <td align="center">
-                                        <a href="/ziYo/productAction/getById?id=${ass.id}&returnType=update">修改</a>
                                     </td>
                                 </tr>
                             </c:forEach >
                         </table>
                         </div>
-                        
+                                   
                  <div id="pageDiv">                   
                          </div> 
                          

@@ -127,6 +127,16 @@ function checkEmpty(obj){
 			return true;
 		}
 	}
+
+function checkEmptyByValue(obj){
+	var val=obj.Trim();
+	if(val==""){
+		return false;
+	}else{
+		return true;
+	}
+}
+
  
 function empty(v){ 
 switch (typeof v){ 

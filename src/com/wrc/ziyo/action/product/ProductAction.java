@@ -22,6 +22,7 @@ import com.wrc.ziyo.pojo.Product;
 import com.wrc.ziyo.pojo.Users;
 import com.wrc.ziyo.service.product.ProductService;
 import com.wrc.ziyo.util.DictUtil;
+import com.wrc.ziyo.util.PageBean;
 
 @Namespace("/productAction")
 @Scope("prototype")
@@ -39,6 +40,7 @@ public class ProductAction extends ActionSupport implements
 	private ProductService productService;
 	private Product product;
 	private List<Product> proList;
+	private PageBean pageBean;
 
 	@Action(value = "add", results = {
 			@org.apache.struts2.convention.annotation.Result(name = "success", location = "/error.jsp"),
@@ -68,12 +70,18 @@ public class ProductAction extends ActionSupport implements
 				.getAttribute("userLogin");
 		if (this.product == null)
 			this.product = new Product();
+		if (this.pageBean == null)
+			pageBean = new PageBean();
 		this.product.setUsers(user);
 		try {
-			List listAss = this.productService.findByExample(this.product, 0,
-					20);
+			List listAss = this.productService.findByCriteria(this.product,
+					pageBean.getStartContent(), pageBean.getContentSize());
+			// 获取总数
+			pageBean.setContentCount(this.productService
+					.getCountByCriteria(product));
 			this.request.setAttribute("listAss", listAss);
 			this.request.setAttribute("product", this.product);
+			this.request.setAttribute("pageBean", this.pageBean);
 			return "success";
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -208,6 +216,14 @@ public class ProductAction extends ActionSupport implements
 
 	public void setProList(List<Product> proList) {
 		this.proList = proList;
+	}
+
+	public PageBean getPageBean() {
+		return pageBean;
+	}
+
+	public void setPageBean(PageBean pageBean) {
+		this.pageBean = pageBean;
 	}
 
 }

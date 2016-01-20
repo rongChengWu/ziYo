@@ -63,11 +63,12 @@ public class SystemAction extends ActionSupport implements ServletRequestAware,
 		try {
 			List list = new ArrayList();
 			if (this.users.getUserType().intValue() == 0) {
-				list = this.nodeService.findAll();
+				list = this.nodeService
+						.findByHqlWher(" order by levelup asc,sort desc ");
 			} else {
 				UserPower up = new UserPower();
 				up.setUser(this.users);
-				List localList1 = this.userPowerService.findByExample(up);
+				list = this.userPowerService.findByExample(up);
 			}
 
 			this.request.getSession()

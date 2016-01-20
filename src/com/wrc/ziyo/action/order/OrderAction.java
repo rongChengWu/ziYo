@@ -137,6 +137,28 @@ public class OrderAction extends ActionSupport implements ServletRequestAware,
 		return "error";
 	}
 
+	@Action(value = "detailList", results = {
+			@org.apache.struts2.convention.annotation.Result(name = "success", location = "/jsp/order/detailList.jsp"),
+			@org.apache.struts2.convention.annotation.Result(name = "error", location = "/error.jsp") })
+	public String detailList() {
+		Users user = (Users) this.request.getSession()
+				.getAttribute("userLogin");
+		if (this.orderDetail == null)
+			this.orderDetail = new OrderDetail();
+		try {
+			List listAss = this.orderDetailService.findByExample(
+					this.orderDetail, 0, 20);
+			this.request.setAttribute("listAss", listAss);
+			this.request.setAttribute("orderDetail", this.orderDetail);
+			return "success";
+		} catch (Exception e) {
+			e.printStackTrace();
+			Logger.getLogger("产品查询失败");
+			this.request.setAttribute("msg", "产品查询失败");
+		}
+		return "error";
+	}
+
 	@Override
 	public void setServletResponse(HttpServletResponse arg0) {
 		this.response = arg0;

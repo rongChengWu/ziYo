@@ -1,58 +1,72 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href="/ziYo/css/login.css" rel="stylesheet" type="text/css" />
-<title>业务网后台管理系统</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>梓瑶兽药管理系统</title>
+<link href="/ziYo/js/metro/css/metro.css" rel="stylesheet">
+    <link href="/ziYo/js/metro/css/metro-icons.css" rel="stylesheet">
+    <link href="/ziYo/js/metro/css/metro-responsive.css" rel="stylesheet">
+
+  <script type="text/javascript" src="/ziYo/js/jquery.min.js"></script>
+    <script src="/ziYo/js/metro/js/metro.js"></script>   
+    
+     <style>
+        .login-form {
+            width: 25rem;
+            height: 18.75rem;
+            position: fixed;
+            top: 50%;
+            margin-top: -9.375rem;
+            left: 50%;
+            margin-left: -12.5rem;
+            background-color: #ffffff;
+            opacity: 0;
+            -webkit-transform: scale(.8);
+            transform: scale(.8);
+        }
+    </style>
+    <script>
+        $(function(){
+            var form = $(".login-form");
+            form.css({
+                opacity: 1,
+                "-webkit-transform": "scale(1)",
+                "transform": "scale(1)",
+                "-webkit-transition": ".5s",
+                "transition": ".5s"
+            });
+        });
+    </script>
 </head>
-<body>
-  <div id="top">
-<div class="logo_2"><img src="/ziYo/images/login/logo-2.png" width="291" height="96" /></div>
-</div>
-<div id="content">
-	<div class="login">
-    	<div class="login_1">
-        <div class="login_2">
-<form action="/ziYo/systemAction/userLogin" method="post" enctype="multipart/form-data">
-        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td width="35">&nbsp;</td>
-    <td width="300"><table width="100%" border="0" cellspacing="0" cellpadding="0">
-      <tr>
-        <td colspan="3"><table width="300" border="0" cellspacing="0" cellpadding="0">
-          <tr>
-            <td width="50" height="26" align="right">用户名：</td>
-            <td colspan="2" align="right"><input name="users.userAccount" type="text" class="input1" id="username" /></td>
-            <td width="88" rowspan="2" align="right"><label>
-             <input type="image" id="imageField" src="/ziYo/images/login/05.jpg" />
-            </label></td>
-          </tr>
-          <tr>
-            <td height="26" align="right">密&nbsp;&nbsp;码：</td>
-            <td height="26" colspan="2" align="right"><input name="users.userPwd" type="password" class="input1" id="password" /></td>
-          </tr>
-          
-        </table></td>
-      </tr>
-      <tr>
-        <td height="15" colspan="3"></td>
-      </tr>
-      <tr>
-        <td colspan="3" align="center" valign="middle"><span class="hui"></span></td>
-      </tr>
-    </table></td>
-    <td width="40">&nbsp;</td>
-  </tr>
-</table>
-
+<body class="bg-darkTeal">
+ <div class="login-form padding20 block-shadow">
+        <form action="/ziYo/systemAction/userLogin" method="post" >
+            <h1 class="text-light">梓瑶生物</h1>
+            <hr class="thin"/>
+            <br />
+            <div class="input-control text full-size" data-role="input">
+                <label for="user_login">账号:</label>
+                <input type="text" name="users.userAccount" id="user_login">
+                <button class="button helper-button clear"><span class="mif-cross"></span></button>
+            </div>
+            <br />
+            <br />
+            <div class="input-control password full-size" data-role="input">
+                <label for="user_password">密码:</label>
+                <input type="password" name="users.userPwd" id="user_password">
+                <button class="button helper-button reveal"><span class="mif-looks"></span></button>
+            </div>
+            <br />
+            <br />
+            <div class="form-actions">
+                <button type="submit" class="button primary">登录</button>
+            </div>
         </form>
-
-        </div>
-        </div>
     </div>
-</div>
 	
 </body>
 </html>

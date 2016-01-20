@@ -3,6 +3,8 @@ package com.wrc.ziyo.service;
 import java.io.Serializable;
 import java.util.List;
 
+import org.hibernate.criterion.DetachedCriteria;
+
 import com.wrc.ziyo.dao.BaseDao;
 
 public class BaseService<T extends Serializable> {
@@ -63,6 +65,15 @@ public class BaseService<T extends Serializable> {
 			throws Exception {
 		return this.baseDao.findByHqlWher(where, objects);
 
+	}
+
+	public List<T> findByCriteria(DetachedCriteria dc) throws Exception {
+		return this.baseDao.findByCriteria(dc);
+	}
+
+	public List<T> findByCriteria(DetachedCriteria dc, int offset, int size)
+			throws Exception {
+		return this.baseDao.findByCriteria(dc, offset, size);
 	}
 
 	public BaseDao<T> getBaseDao() {

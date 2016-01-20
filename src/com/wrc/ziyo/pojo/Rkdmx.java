@@ -23,32 +23,32 @@ public class Rkdmx implements Serializable {
 	@SequenceGenerator(name = "RKDMX_SEQ", allocationSize = 1, initialValue = 1, sequenceName = "RKDMX_SEQ")
 	private Integer id;
 	// 入库单
-	@Column(name = "RKD_ID")
+	@Column(name = "RKDMX_RKD_ID")
 	private Integer rkdid;
 	// 商品
-	@Column(name = "TP_ID")
+	@Column(name = "RKDMX_TP_ID")
 	private Integer tpid;
-	@Column(name = "RKDJ")
+	@Column(name = "RKDMX_RKDJ")
 	private Float rkdj;
-	@Column(name = "RKSL")
+	@Column(name = "RKDMX_RKSL")
 	private Integer rksl;
-	@Column(name = "DW")
+	@Column(name = "RKDMX_DW")
 	private String dw;
-	@Column(name = "JE")
+	@Column(name = "RKDMX_JE")
 	private Float je;
-	@Column(name = "SCPH")
+	@Column(name = "RKDMX_SCPH")
 	private String scph;
-	@Column(name = "SCRQ")
+	@Column(name = "RKDMX_SCRQ")
 	private Date scrq;
-	@Column(name = "YXQ")
+	@Column(name = "RKDMX_YXQ")
 	private Date yxq;
-	@Column(name = "BZ")
+	@Column(name = "RKDMX_BZ")
 	private String bz;
-	@Column(name = "SYSL")
+	@Column(name = "RKDMX_SYSL")
 	private Integer sysl;
 
 	@OneToOne
-	@JoinColumn(name = "TP_ID", insertable = false, updatable = false)
+	@JoinColumn(name = "RKDMX_TP_ID", insertable = false, updatable = false)
 	private Product product;
 
 	public Integer getId() {

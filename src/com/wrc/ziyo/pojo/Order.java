@@ -23,46 +23,46 @@ public class Order implements Serializable {
 	@SequenceGenerator(name = "ORDER_SEQ", allocationSize = 1, initialValue = 1, sequenceName = "ORDER_SEQ")
 	private Integer id;
 
-	@Column(name = "XSDBH")
+	@Column(name = "TO_XSDBH")
 	private String xsdbh;
 
 	@Column(name = "TO_TIME")
 	private Date to_date;
 
-	@Column(name = "TC_ID")
+	@Column(name = "TO_TC_ID")
 	private Integer tc_id;
 
-	@Column(name = "FZR")
+	@Column(name = "TO_FZR")
 	private String fzr;
 
-	@Column(name = "bdzj")
+	@Column(name = "TO_bdzj")
 	private Float bdzj;
 
-	@Column(name = "BZ")
+	@Column(name = "TO_BZ")
 	private String bz;
 
-	@Column(name = "TYPE")
+	@Column(name = "TO_TYPE")
 	private String type;
 
-	@Column(name = "USER_ID")
+	@Column(name = "TO_USER_ID")
 	private Integer user_id;
 
-	@Column(name = "lastTime")
+	@Column(name = "TO_lastTime")
 	private Date lastTime;
 
-	@Column(name = "LASET_USER")
+	@Column(name = "TO_LASET_USER")
 	private Integer lastUser;
 
 	@OneToOne
-	@JoinColumn(name = "USER_ID", insertable = false, updatable = false)
+	@JoinColumn(name = "TO_USER_ID", insertable = false, updatable = false)
 	private Users zdUser;
 
 	@OneToOne
-	@JoinColumn(name = "LASET_USER", insertable = false, updatable = false)
+	@JoinColumn(name = "TO_LASET_USER", insertable = false, updatable = false)
 	private Users zhUser;
 
 	@OneToOne
-	@JoinColumn(name = "TC_ID", insertable = false, updatable = false)
+	@JoinColumn(name = "TO_TC_ID", insertable = false, updatable = false)
 	private Customer customer;
 
 	public Integer getId() {

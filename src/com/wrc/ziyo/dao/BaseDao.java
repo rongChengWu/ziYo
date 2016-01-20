@@ -13,6 +13,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Example;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -218,14 +219,40 @@ public class BaseDao<T extends Serializable> {
 	 * @throws HibernateException
 	 */
 	@SuppressWarnings("unchecked")
-	public List<T> findByCriteria(Criteria criteria) throws Exception {
+	public List<T> findByCriteria(DetachedCriteria dc) throws Exception {
 		List<T> list = null;
 		Session session = null;
 		try {
 			session = sessionFactory.openSession();
 			session.beginTransaction();
-			Criteria criteria1 = session.createCriteria(getEntityClass());
-			criteria1 = criteria;
+			Criteria criteria1 = dc.getExecutableCriteria(session);
+			list = criteria1.list();
+			session.getTransaction().commit();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return list;
+	}
+
+	/**
+	 * QBC查询 分页
+	 * 
+	 * @param criteria
+	 * @throws HibernateException
+	 */
+	@SuppressWarnings("unchecked")
+	public List<T> findByCriteria(DetachedCriteria dc, int offset, int size)
+			throws Exception {
+		List<T> list = null;
+		Session session = null;
+		try {
+			session = sessionFactory.openSession();
+			session.beginTransaction();
+			Criteria criteria1 = dc.getExecutableCriteria(session);
+			criteria1.setMaxResults(size);
+			criteria1.setFirstResult(offset);
 			list = criteria1.list();
 			session.getTransaction().commit();
 		} catch (HibernateException e) {
@@ -251,6 +278,7 @@ public class BaseDao<T extends Serializable> {
 			session = sessionFactory.openSession();
 			session.beginTransaction();
 			Criteria criteria = session.createCriteria(getEntityClass());
+			example.enableLike();
 			criteria.add(example);
 			list = criteria.list();
 			session.getTransaction().commit();
@@ -430,6 +458,7 @@ public class BaseDao<T extends Serializable> {
 			session = this.sessionFactory.openSession();
 			session.beginTransaction();
 			Criteria criterial = session.createCriteria(getEntityClass());
+			example.enableLike();
 			criterial.add(example);
 			criterial.setMaxResults(size);
 			criterial.setFirstResult(offset);
